@@ -7,29 +7,36 @@ const temperature = document.getElementById('temperature') as HTMLElement;
 const humidity = document.getElementById('humidity') as HTMLElement;
 
 searchBtn.addEventListener('click', () => {
-    const city = cityInput.value;
-    if (city) {
-        getWeather(city);
+    if (cityInput.value) 
+    {
+        getWeather(cityInput.value);
     }
 });
 
-async function getWeather(city: string) {
-    try {
+async function getWeather(city: string) 
+{
+    try 
+    {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
         const data = await response.json();
 
-        if (data.cod === 200) {
+        if (data.cod === 200) 
+        {
             cityName.textContent = data.name;
             weatherDescription.textContent = data.weather[0].description;
             temperature.textContent = `Temperature: ${data.main.temp}°C`;
             humidity.textContent = `Humidity: ${data.main.humidity}%`;
-        } else {
+        } 
+        else 
+        {
             cityName.textContent = 'City not found';
             weatherDescription.textContent = '';
             temperature.textContent = '';
             humidity.textContent = '';
         }
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         console.error('Error fetching weather data:', error);
         cityName.textContent = 'Error fetching data';
         weatherDescription.textContent = '';

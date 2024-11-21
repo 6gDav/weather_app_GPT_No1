@@ -16,9 +16,8 @@ const weatherDescription = document.getElementById('weather-description');
 const temperature = document.getElementById('temperature');
 const humidity = document.getElementById('humidity');
 searchBtn.addEventListener('click', () => {
-    const city = cityInput.value;
-    if (city) {
-        getWeather(city);
+    if (cityInput.value) {
+        getWeather(cityInput.value);
     }
 });
 function getWeather(city) {
